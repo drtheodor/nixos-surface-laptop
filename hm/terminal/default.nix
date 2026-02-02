@@ -43,6 +43,7 @@
       enable = true;
       settings = {
         logo = {
+          # https://www.reddit.com/r/NixOS/comments/1osxsjb/comment/no0z52w/
           source = "${./logo.txt}";
           type = "file";
           color = {

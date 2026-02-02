@@ -3,7 +3,7 @@
 {
   imports = [
     ./terminal
-    ./niri.nix
+    ./niri
     ./dev.nix
     ./discord.nix
     ./catppuccin

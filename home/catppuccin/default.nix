@@ -88,8 +88,8 @@
   };
   
   config.xdg.configFile = {
-    "rofi/catppuccin-lavrent-mocha.rasi".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/hm/catppuccin/rofi.rasi;
-    "waybar/style.css".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/hm/catppuccin/waybar.css;
+    "rofi/catppuccin-lavrent-mocha.rasi".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/home/catppuccin/rofi.rasi;
+    "waybar/style.css".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/home/catppuccin/waybar.css;
   };
 
   config.fonts.fontconfig = {

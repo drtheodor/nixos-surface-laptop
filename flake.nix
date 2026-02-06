@@ -32,7 +32,7 @@
 
             home-manager.users.theo = {
               imports = [
-                ./hm
+                ./home
                 catppuccin.homeModules.catppuccin
               ];
             };

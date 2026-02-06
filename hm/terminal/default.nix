@@ -38,6 +38,16 @@
         terminal.shell = "${lib.getExe pkgs.fish}";
       };
     };
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      extraConfig = ''
+        :set tabstop=4
+        :set shiftwidth=4
+        :set expandtab
+        :set relativenumber
+      '';
+    };
     fish = {
       enable = true;
       interactiveShellInit = ''

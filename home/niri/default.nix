@@ -9,6 +9,7 @@
     waybar
     mate.mate-polkit
     nautilus
+    file-roller
 
     cliphist
     wl-clipboard

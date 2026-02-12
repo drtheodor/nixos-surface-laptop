@@ -12,6 +12,7 @@
     htop
     onefetch
     eza
+    p7zip
   ];
 
   programs = {

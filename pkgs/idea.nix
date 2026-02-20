@@ -12,7 +12,17 @@ let
 in
 pkgs.symlinkJoin {
     name = "IntelliJ Minecraft Support";
-    paths = [ pkgs.jetbrains.idea ];
+    paths = [ 
+      (pkgs.jetbrains.idea.override {
+        vmopts = ''
+          -Dnosplash=true
+          -Dawt.toolkit.name=WLToolkit
+          --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED
+          --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED
+
+        '';
+      })
+    ];
     buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
         wrapProgram $out/bin/idea \

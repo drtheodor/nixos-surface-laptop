@@ -80,12 +80,12 @@
           source = "${./logo.txt}";
           type = "file";
           color = {
-            "1" = "#F3A2BB";
-            "2" = "#EEAE7B";
-            "3" = "#B5C77D";
+            "1" = "#80C6F8";
+            "2" = "#6DD3C0";
+            "3" = "#80C6F8";
             "4" = "#6DD3C0";
             "5" = "#80C6F8";
-            "6" = "#C7AFF5";
+            "6" = "#6DD3C0";
           };
         };
         display = {
@@ -102,7 +102,7 @@
           { type = "os"; key = builtins.fromJSON ''" \u001b[44;30m OS \u001b[0m\u001b[34;40m"''; format = builtins.fromJSON ''"\u001b[40m \u001b[37m{3}\u001b[0m\u001b[30m"''; }
           { type = "kernel"; key = builtins.fromJSON ''" \u001b[44;30m󰒋 KE \u001b[0m\u001b[34;40m"''; format = builtins.fromJSON ''"\u001b[40m \u001b[37m{2}\u001b[0m\u001b[30m"''; }
           { type = "uptime"; key = builtins.fromJSON ''" \u001b[44;30m󰔛 UP \u001b[0m\u001b[34;40m"''; format = builtins.fromJSON ''"\u001b[40m \u001b[37m{2}h {3}m\u001b[0m\u001b[30m"''; }
-          { type = "packages"; key = builtins.fromJSON ''" \u001b[44;30m󰏖 PK \u001b[0m\u001b[34;40m"''; format = builtins.fromJSON ''"\u001b[40m \u001b[37m{nix-system} (system), {nix-user} (user), {flatpak-all} (flatpak)\u001b[0m\u001b[30m"''; }
+          { type = "command"; text = "~/.cache/fastfetch/packages.sh"; key = builtins.fromJSON ''" \u001b[44;30m󰏖 PK \u001b[0m\u001b[34;40m"''; format = builtins.fromJSON ''"\u001b[40m \u001b[37m{result}\u001b[0m\u001b[30m"''; }
 
           "break"
 
@@ -125,5 +125,32 @@
         ];
       };
     };
+  };
+
+  home.activation.fastFetchSystemPkgs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    CACHE_DIR="~/.cache/fastfetch/packages/nix"
+    rm -f $CACHE_DIR/run/current-system
+    rm -f $CACHE_DIR/etc/profiles/per-user/${config.home.username}
+
+    mkdir -p $CACHE_DIR/run/
+    mkdir -p $CACHE_DIR/etc/profiles/per-user/
+
+    for x in $(nix-store --query --requisites /run/current-system); do if [ -d $x ]; then echo $x ; fi ; done | cut -d- -f2- | egrep '([0-9]{1,}\.)+[0-9]{1,}' | egrep -v '\-doc$|-man$|-info$|-dev$|-bin$|^nixos-system-nixos-' | uniq | wc -l >> $CACHE_DIR/run/current-system
+
+    for x in $(nix-store --query --requisites /etc/profiles/per-user/${config.home.username}); do if [ -d $x ]; then echo $x ; fi ; done | cut -d- -f2- | egrep '([0-9]{1,}\.)+[0-9]{1,}' | egrep -v '\-doc$|-man$|-info$|-dev$|-bin$' | uniq | wc -l >> $CACHE_DIR/etc/profiles/per-user/${config.home.username}
+  '';
+
+  xdg.cacheFile."fastfetch/packages.sh" = {
+    text = ''
+      BASE_DIR="~/.cache/fastfetch/packages/nix"
+      
+      SYS_PKGS="$(cat $BASE_DIR/run/current-system)"
+      USER_PKGS="$(cat $BASE_DIR/etc/profiles/per-user/${config.home.username})"
+      FLATPAK_PKGS="$(flatpak list | wc -l)"
+
+      echo "$SYS_PKGS (system), $USER_PKGS (user), $FLATPAK_PKGS (flatpak)"
+    '';
+
+    executable = true;
   };
 }

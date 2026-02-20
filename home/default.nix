@@ -5,7 +5,7 @@
     ./terminal
     ./niri
     ./dev.nix
-    ./discord.nix
+    #./discord.nix
     ./catppuccin
   ];
 

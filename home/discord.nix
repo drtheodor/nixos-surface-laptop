@@ -23,20 +23,20 @@
       builtins.listToAttrs
     ];
   plugins = [
-    {
+  {
       name = "AccountPanelServerProfile";
       prioritizeServerProfile = true;
     }
-    #{
-    #  name = "AllCallTimers";
-    #  format = "human";
-    #  showRoleColor = true;
-    #  showSeconds = true;
-    #  showWithoutHover = false;
-    #  trackSelf = true;
-    #  watchLargeGuilds = false;
-    #}
-    #"AmITyping"
+    {
+      name = "AllCallTimers";
+      format = "human";
+      showRoleColor = true;
+      showSeconds = true;
+      showWithoutHover = false;
+      trackSelf = true;
+      watchLargeGuilds = false;
+    }
+    "AmITyping"
     {
       name = "Anammox";
       gift = false;
@@ -78,7 +78,7 @@
       hide = true;
       noSpellCheck = false;
     }
-    #"BetterPlusReacts"
+    "BetterPlusReacts"
     {
       name = "BetterQuickReact";
       columns = 4;
@@ -96,28 +96,41 @@
       bothStyles = false;
       copyRoleColorInProfilePopout = false;
     }
-    #{
-    #  name = "BetterSessions";
-    #  backgroundCheck = true;
-    #  checkInterval = 20;
-    #}
-    #"BetterUploadButton"
-    #"BetterUserArea" # TODO: uncomment when fixed
-    #"BiggerStreamPreview"
+    {
+      name = "BetterSessions";
+      backgroundCheck = true;
+      checkInterval = 20;
+    }
+    "BetterSettings"
+    "BetterUploadButton"
+    "BetterUserArea"
+    "BiggerStreamPreview"
+    "BlockKrisp"
     {
       name = "BlurNSFW";
       blurAmount = 10;
     }
-    #{
-    #  name = "CallTimer";
-    #  format = "human";
-    #}
-    #{
-    #  name = "CharacterCounter";
-    #  colorEffects = true;
-    #  position = false;
-    #}
+    "BypassPinPrompt"
+    {
+      name = "CallTimer";
+      format = "human";
+    }
+    {
+      name = "ChannelTabs";
+      onStartup = "remember";
+      renderAllTabs = true; # I want to use ALL my RAM! /s
+      createNewTabIfNotExists = true;
+      enableRapidNavigation = true;
+      enableNumberKeySwitching = false;
+      openNewTabsInCompactMode = true;
+    }
+    {
+      name = "CharacterCounter";
+      colorEffects = true;
+      position = false;
+    }
     "ChatInputButtonAPI"
+    "CleanerChannelGroups"
     "ClearURLs"
     "ClipsEnhancements"
     {
@@ -131,19 +144,20 @@
     "CommandsAPI"
     {
       name = "ConsoleJanitor";
-      disableLoggers = true;
+      disableLoggers = false;
       disableSpotifyLogger = true;
       whitelistedLoggers = "GatewaySocket; Routing/Utils";
     }
-    #"ConsoleShortcuts"
+    "ConsoleShortcuts"
     "ContextMenuAPI"
     {
       name = "CopyEmojiMarkdown";
       copyUnicode = true;
     }
     "CopyFileContents"
-    "BetterCommands"
-
+    "CopyProfileColors"
+    "CopyStatusUrls"
+    "CopyStickerLinks"
     "CopyUserMention"
     "CopyUserURLs"
     {
@@ -151,76 +165,88 @@
       attemptToNavigateToHome = false;
       attemptToPreventCrashes = true;
     }
-    #{
-    #  name = "CustomUserColors";
-    #  colorInServers = true;
-    #  dmList = true;
-    #}
-    #"DeadMembers"
-    #{
-    #  name = "Dearrow";
-    #  dearrowByDefault = true;
-    #  hideButton = false;
-    #  replaceElements = 0;
-    #}
+    "CustomFolderIcons"
+    {
+      name = "CustomUserColors";
+      colorInServers = true;
+      dmList = true;
+    }
+    "DeadMembers"
+    {
+      name = "Dearrow";
+      dearrowByDefault = true;
+      hideButton = false;
+      replaceElements = 0;
+    }
     {
       name = "Decor";
       baseUrl = "https://decor.fieryflames.dev";
     }
-    #"DisableCallIdle"
+    "DisableCallIdle"
     "DisableCameras"
-    #"DontFilterMe"
-    #"DontRoundMyTimestamps"
-    #{
-    #  name = "Downloadify";
-    #  defaultDirectory = "${config.home.homeDirectory}/Downloads/Equibop";
-    #}
+    "DontFilterMe"
+    "DontRoundMyTimestamps"
+    {
+      name = "Downloadify";
+      defaultDirectory = "${config.home.homeDirectory}/Downloads/Equibop";
+    }
+    "DragFavoriteEmotes"
+    {
+      name = "Dragify";
+      inviteTemporaryMembership = true;
+      reuseExistingInvites = true;
+    }
     "DynamicImageModalAPI"
-    #"EmojiDumper"
+    "EmojiDumper"
     "EmoteCloner"
     "EquicordHelper"
-    #{
-    #  name = "Experiments";
-    #  toolbarDevMenu = true;
-    #}
-    #"ExportContacts"
+    {
+      name = "Experiments";
+      toolbarDevMenu = true;
+    }
+    {
+      name = "ExportMessages";
+      exportContacts = true;
+    }
     "FakeNitro"
+    "FavouriteAnything"
     "FavoriteEmojiFirst"
-    #{
-    #  name = "FindReply";
-    #  hideButtonIfNoReply = true;
-    #  includeAuthor = true;
-    #  includePings = true;
-    #}
+    {
+      name = "FindReply";
+      hideButtonIfNoReply = true;
+      includeAuthor = true;
+      includePings = true;
+    }
     "FixCodeblockGap"
     "FixFileExtensions"
-    #"FixImagesQuality"
+    "FixImagesQuality"
     {
       name = "FixSpotifyEmbeds";
       volume = 10;
     }
     "FixYoutubeEmbeds"
-    #{
-    #  name = "FontLoader";
-    #  applyOnClodeBlocks = true;
-    #  selectedFont = "JetBrainsMono Nerd Font Propo";
-    #}
-    #"ForceOwnerCrown"
+    {
+      name = "FontLoader";
+      applyOnClodeBlocks = true;
+      selectedFont = "JetBrainsMono Nerd Font Propo";
+    }
+    "ForceOwnerCrown"
     "FrequentQuickSwitcher"
+    "FriendCloud"
     "FriendCodes"
     "FriendInvites"
-    #"FriendTags"
+    "FriendTags"
     "FriendsSince"
     "FriendshipRanks"
     "FullSearchContext"
     "FullUserInChatbox"
     {
-      # TODO: uncomment when fixed
       name = "GameActivityToggle";
       oldIcon = false;
     }
-    #"GifPaste"
-    #"GitHubRepos"
+    "GifCollections"
+    "GifPaste"
+    "GitHubRepos"
     {
       name = "Glide";
       Accent = "313338";
@@ -239,22 +265,24 @@
     "GodMode"
     {
       name = "GoogleThat";
-      defaultEngine = "Google";
+      defaultEngine = "DuckDuckGo";
       hyperlink = true;
     }
-    #{
-    #  name = "GreetStickerPicker";
-    #  greetMode = "Greet";
-    #}
-    #"GuildPickerDumper"
-    #{
-    #  name = "HideServers";
-    #  showIndicator = true;
-    #}
+    {
+      name = "GreetStickerPicker";
+      greetMode = "Greet";
+    }
+    "GuildPickerDumper"
+    "GuildTagSettings"
+    {
+      name = "HideServers";
+      showIndicator = true;
+    }
     "HolyNotes"
-    #"HomeTyping"
+    "HomeTyping"
+    "ILoveSpam"
     "IRememberYou"
-    #"ImageLink"
+    "ImageLink"
     {
       name = "ImagePreview";
       defaultMaxSize = "0";
@@ -274,14 +302,14 @@
       name = "ImplicitRelationships";
       sortByAffinity = true;
     }
-    #"InRole"
-    #"JumpToStart"
-    #"KeepCurrentChannel"
-    #{
-    #  name = "LimitMiddleClickPaste";
-    #  limitTo = "active";
-    #  reenableDelay = 500;
-    #}
+    "InRole"
+    "JumpTo"
+    "LastActive"
+    {
+      name = "LimitMiddleClickPaste";
+      limitTo = "active";
+      reenableDelay = 500;
+    }
     {
       name = "LoadingQuotes";
       additionalQuotes = "";
@@ -317,11 +345,11 @@
       };
     }
     "MessageAccessoriesAPI"
-    #{
-    #  name = "MessageBurst";
-    #  shouldMergeWithAttachment = false;
-    #  timePeriod = 3;
-    #}
+    {
+      name = "MessageBurst";
+      shouldMergeWithAttachment = false;
+      timePeriod = 3;
+    }
     {
       name = "MessageClickActions";
       enableDeleteOnClick = true;
@@ -331,12 +359,12 @@
     }
     "MessageDecorationsAPI"
     "MessageEventsAPI"
-    #{
-    #  name = "MessageLatency";
-    #  detectDiscordKotlin = true;
-    #  latency = 2;
-    #  showMillis = true;
-    #}
+    {
+      name = "MessageLatency";
+      detectDiscordKotlin = true;
+      latency = 2;
+      showMillis = true;
+    }
     {
       name = "MessageLinkTooltip";
       display = "auto";
@@ -346,7 +374,7 @@
     }
     {
       name = "MessageLogger";
-      collapseDeleted = true;
+      collapseDeleted = false;
       deleteStyle = "text";
       ignoreBots = false;
       ignoreChannels = "";
@@ -356,58 +384,61 @@
       logDeletes = true;
       logEdits = true;
     }
-    #{
-    #  name = "MessageLoggerEnhanced";
-    #  ShowLogsButton = true;
-    #  alwaysLogCurrentChannel = true;
-    #  alwaysLogDirectMessages = true;
-    #  attachmentFileExtensions = "png,jpg,jpeg,gif,webp,mp4,webm,mp3,ogg,wav";
-    #  attachmentSizeLimitInMegabytes = 12;
-    #  blacklistedIds = "";
-    #  cacheLimit = 1000;
-    #  cacheMessagesFromServers = false;
-    #  hideMessageFromMessageLoggers = false;
-    #  hideMessageFromMessageLoggersDeletedMessage = "redacted eh";
-    #  ignoreBots = false;
-    #  ignoreMutedCategories = false;
-    #  ignoreMutedChannels = false;
-    #  ignoreMutedGuilds = true;
-    #  ignoreSelf = false;
-    #  imageCacheDir = "${config.xdg.configHome}/equibop/MessageLoggerData/savedImages";
-    #  logsDir = "${config.xdg.configHome}/equibop/MessageLoggerData";
-    #  messageLimit = 200;
-    #  messagesToDisplayAtOnceInLogs = 100;
-    #  permanentlyRemoveLogByDefault = false;
-    #  saveImages = true;
-    #  saveMessages = true;
-    #  sortNewest = true;
-    #  whitelistedIds = "";
-    #}
+    {
+      name = "MessageLoggerEnhanced";
+      ShowLogsButton = true;
+      alwaysLogCurrentChannel = true;
+      alwaysLogDirectMessages = true;
+      attachmentFileExtensions = "png,jpg,jpeg,gif,webp,mp4,webm,mp3,ogg,wav";
+      attachmentSizeLimitInMegabytes = 12;
+      blacklistedIds = "";
+      cacheLimit = 1000;
+      cacheMessagesFromServers = false;
+      hideMessageFromMessageLoggers = false;
+      hideMessageFromMessageLoggersDeletedMessage = "redacted eh";
+      ignoreBots = false;
+      ignoreMutedCategories = false;
+      ignoreMutedChannels = false;
+      ignoreMutedGuilds = true;
+      ignoreSelf = false;
+      imageCacheDir = "${config.xdg.configHome}/equibop/MessageLoggerData/savedImages";
+      logsDir = "${config.xdg.configHome}/equibop/MessageLoggerData";
+      messageLimit = 200;
+      messagesToDisplayAtOnceInLogs = 100;
+      permanentlyRemoveLogByDefault = false;
+      saveImages = true;
+      saveMessages = true;
+      sortNewest = true;
+      whitelistedIds = "";
+    }
     "MessagePopoverAPI"
     "MessageUpdaterAPI"
     "ModalFade"
     "MoreCommands"
     "MoreKaomoji"
-    #{
-    #  name = "Moyai";
-    #  ignoreBlocked = true;
-    #  ignoreBots = true;
-    #  quality = "Normal";
-    #  triggerWhenUnfocused = true;
-    #  volume = 0.5;
-    #}
+    {
+      name = "Moyai";
+      ignoreBlocked = true;
+      ignoreBots = true;
+      quality = "Normal";
+      triggerWhenUnfocused = true;
+      volume = 0.5;
+    }
+    {
+      name = "MusicControls";
+      hoverControls = true;
+    }
     "MutualGroupDMs"
     "NSFWGateBypass"
     "NeverPausePreviews"
-    #"NewPluginsManager"
-    #"NoAppsAllowed"
-    #"NoDevtoolsWarning"
+    "NewPluginsManager"
+    "NoAppsAllowed"
+    "NoDevtoolsWarning"
     "NoF1"
-    #"NoMirroredCamera"
+    "NoMirroredCamera"
     "NoModalAnimation"
     "NoNitroUpsell"
     "NoOnboardingDelay"
-    "NoTypingAnimation"
     {
       name = "NoTrack";
       disableAnalytics = true;
@@ -419,7 +450,7 @@
       name = "NotificationVolume";
       notificationVolume = 100;
     }
-    #"PauseInvitesForever"
+    "PauseInvitesForever"
     {
       name = "PermissionFreeWill";
       lockout = true;
@@ -433,16 +464,21 @@
       name = "PictureInPicture";
       loop = true;
     }
+    {
+      name = "PinDMs";
+      pinOrder = "Custom";
+      canCollapseDmSection = true;
+    }
     "PinIcon"
-    #{
-    #  name = "PlatformIndicators";
-    #  ConsoleIcon = "equicord";
-    #  badges = true;
-    #  colorMobileIndicator = true;
-    #  list = true;
-    #  messages = true;
-    #  showBots = true;
-    #}
+    {
+      name = "PlatformIndicators";
+      ConsoleIcon = "equicord";
+      badges = true;
+      colorMobileIndicator = true;
+      list = true;
+      messages = true;
+      showBots = true;
+    }
     {
       name = "PlatformSpoofer";
       platform = "desktop";
@@ -450,13 +486,22 @@
     "PreviewMessage"
     "PurgeMessages"
     "QuestFocused"
-    ""
+    {
+      name = "Questify";
+      disableQuests = true;
+      completeVideoQuestsInBackground = true;
+      completeGameQuestsInBackground = true;
+      completeAchievementQuestsInBackground = true;
+      questButtonDisplay = "never";
+      questRewardIncludeInGame = false;
+      questRewardIncludeCollectibles = false;
+    }
     "QuickMention"
     {
       name = "Quoter";
       userIdentifier = 0;
     }
-    #"ReactErrorDecoder"
+    "ReactErrorDecoder"
     "ReadAllNotificationsButton"
     {
       name = "RelationshipNotifier";
@@ -467,17 +512,22 @@
       offlineRemovals = true;
       servers = true;
     }
-    #"RepeatMessage"
+    "RepeatMessage"
+    {
+      name = "ReplaceGoogleSearch";
+      replacementEngine = "DuckDuckGo";
+    }
     "ReplyTimestamp"
-    #"RevealAllSpoilers"
+    "RevealAllSpoilers"
     "ReverseImageSearch"
-    #{
-    #  name = "ReviewDB";
-    #  hideBlockedUsers = true;
-    #  hideTimestamps = false;
-    #  notifyReviews = true;
-    #  showWarning = true;
-    #}
+    {
+      name = "ReviewDB";
+      hideBlockedUsers = true;
+      hideTimestamps = false;
+      notifyReviews = true;
+      showWarning = true;
+    }
+    "RichMagnetLinks"
     {
       name = "RoleColorEverywhere";
       chatMentions = true;
@@ -488,12 +538,13 @@
       reactorsList = true;
       voiceUsers = true;
     }
-    #"ScreenRecorder"
+    "SaveFavoriteGIFs"
+    "ScreenRecorder"
     "SearchFix"
-    #{
-    #  name = "SecretRingToneEnabler";
-    #  onlySnow = false;
-    #}
+    {
+      name = "SecretRingToneEnabler";
+      onlySnow = false;
+    }
     {
       name = "SendTimestamps";
       replaceMessageContents = true;
@@ -518,86 +569,87 @@
       theme = "https://esm.sh/@catppuccin/vscode/themes/${config.theme.flavor}.json";
       useDevIcon = "GREYSCALE";
     }
-    #{
-    #  name = "ShowBadgesInChat";
-    #  DiscordNitroPosition = 0;
-    #  DiscordProfilePosition = 1;
-    #  EquicordContributorPosition = 3;
-    #  EquicordDonorPosition = 2;
-    #  VencordContributorPosition = 5;
-    #  VencordDonorPosition = 4;
-    #  showDiscordNitro = true;
-    #  showDiscordProfile = true;
-    #  showEquicordContributor = false;
-    #  showEquicordDonor = false;
-    #  showVencordContributor = false;
-    #  showVencordDonor = false;
-    #}
-    #{
-    #  name = "ShowConnections";
-    #  iconSize = 32;
-    #  iconSpacing = 1;
-    #}
-    #{
-    #  name = "ShowHiddenChannels";
-    #  channelStyle = 0;
-    #  defaultAllowedUsersAndRolesDropdownState = true;
-    #  showMode = 0;
-    #}
-    #{
-    #  name = "ShowHiddenThings";
-    #  showInvitesPaused = true;
-    #  showModView = true;
-    #  showTimeouts = true;
-    #}
-    #{
-    #  name = "ShowMeYourName";
-    #  displayNames = false;
-    #  inReplies = true;
-    #  mode = "nick-user";
-    #  preferFriend = true;
-    #}
+    {
+      name = "ShowBadgesInChat";
+      DiscordNitroPosition = 0;
+      DiscordProfilePosition = 1;
+      EquicordContributorPosition = 3;
+      EquicordDonorPosition = 2;
+      VencordContributorPosition = 5;
+      VencordDonorPosition = 4;
+      showDiscordNitro = true;
+      showDiscordProfile = true;
+      showEquicordContributor = false;
+      showEquicordDonor = false;
+      showVencordContributor = false;
+      showVencordDonor = false;
+    }
+    {
+      name = "ShowConnections";
+      iconSize = 32;
+      iconSpacing = 1;
+    }
+    {
+      name = "ShowHiddenChannels";
+      channelStyle = 0;
+      defaultAllowedUsersAndRolesDropdownState = true;
+      showMode = 0;
+    }
+    {
+      name = "ShowHiddenThings";
+      showInvitesPaused = true;
+      showModView = true;
+      showTimeouts = true;
+    }
+    {
+      name = "ShowMeYourName";
+      displayNames = false;
+      inReplies = true;
+      mode = "nick-user";
+      preferFriend = true;
+    }
     {
       name = "ShowTimeoutDuration";
       displayStyle = "ssalggnikool";
     }
     "SidebarChat"
-    #{
-    #  name = "SilentTyping";
-    #  blockAllIsTyping = false;
-    #  blockAllTypingIndicators = false;
-    #  blockEverything = false;
-    #  contextMenu = true;
-    #  isEnabled = true;
-    #  showIcon = false;
-    #}
-    #{
-    #  name = "SortFriendRequests";
-    #  showDates = true;
-    #}
-    #{
-    #  name = "SoundBoardLogger";
-    #  FileType = ".ogg";
-    #  IconLocation = "toolbar";
-    #  soundVolume = 0.5;
-    #}
-    "SplitLargeMessages"
     {
-      name = "SpotifyControls";
-      hoverControls = false;
-      previousButtonRestartsTrack = true;
-      useSpotifyUris = false;
+      name = "SilentTyping";
+      blockAllIsTyping = false;
+      blockAllTypingIndicators = false;
+      blockEverything = false;
+      contextMenu = true;
+      isEnabled = true;
+      showIcon = false;
     }
+    {
+      name = "SortFriendRequests";
+      showDates = true;
+    }
+    {
+      name = "SoundBoardLogger";
+      FileType = ".ogg";
+      IconLocation = "toolbar";
+      soundVolume = 0.5;
+    }
+    "SplitLargeMessages"
+    "SpotifyActivityToggle"
+    # {
+    #   name = "SpotifyControls";
+    #   hoverControls = false;
+    #   previousButtonRestartsTrack = true;
+    #   useSpotifyUris = false;
+    # }
     {
       name = "SpotifyCrack";
       keepSpotifyActivityOnIdle = false;
       noSpotifyAutoPause = true;
     }
-    #"SpotifyLyrics"
+    # "SpotifyLyrics"
     "SpotifyShareCommands"
     "StartupTimings"
     "StatusPresets"
-    #"StickerPaste"
+    "StickerPaste"
     "StreamerModeOn"
     {
       name = "SuperReactionTweaks";
@@ -613,6 +665,7 @@
       showMessageHeaderTime = true;
       showProfileTime = true;
     }
+    "ToneIndicators"
     {
       name = "Translate+";
       shavian = true;
@@ -620,31 +673,30 @@
       target = "ru";
       toki = true;
     }
-    #{
-    #  name = "TypingIndicator";
-    #  includeBlockedUsers = false;
-    #  includeCurrentChannel = true;
-    #  includeMutedChannels = false;
-    #  indicatorMode = 3;
-    #}
+    {
+      name = "TypingIndicator";
+      includeBlockedUsers = false;
+      includeCurrentChannel = true;
+      includeMutedChannels = false;
+      indicatorMode = 3;
+    }
     {
       name = "TypingTweaks";
       alternativeFormatting = true;
       showAvatars = true;
       showRoleColors = true;
     }
-    #{
-    #  name = "USRBG";
-    #  nitroFirst = true;
-    #  voiceBackground = true;
-    #}
+    {
+      name = "USRBG";
+      nitroFirst = true;
+      voiceBackground = true;
+    }
     "Unindent"
-    "UnitConverter"
-    #{
-    #  name = "UnlimitedAccounts";
-    #  maxAccounts = 0;
-    #}
     "UniversalMention"
+    {
+      name = "UnlimitedAccounts";
+      maxAccounts = 0;
+    }
     {
       name = "UnlockedAvatarZoom";
       zoomMultiplier = 4;
@@ -654,11 +706,11 @@
       pronounsFormat = "LOWERCASE";
       showSelf = true;
     }
-    #{
-    #  name = "UserPFP";
-    #  databaseToUse = "https://userpfp.github.io/UserPFP/source/data.json";
-    #  preferNitro = true;
-    #}
+    {
+      name = "UserPFP";
+      databaseToUse = "https://userpfp.github.io/UserPFP/source/data.json";
+      preferNitro = true;
+    }
     "UserSettingsAPI"
     {
       name = "UserVoiceShow";
@@ -666,10 +718,10 @@
       showInMessages = true;
       showInUserProfileModal = true;
     }
-    "ValidReply"
-    "ValidUser"
     "VCPanelSettings"
     "VCSupport"
+    "ValidReply"
+    "ValidUser"
     {
       name = "VideoSpeed";
       preservePitch = false;
@@ -697,6 +749,11 @@
       noiseSuppression = true;
     }
     {
+      name = "VoiceMessageTranscriber";
+      selectedModel = "Xenova/whisper-medium";
+      quantized = false;
+    }
+    {
       name = "VolumeBooster";
       multiplier = 5;
     }
@@ -706,7 +763,7 @@
     }
     "WebKeybinds"
     "WebScreenShareFixes"
-    #"WebpackTarball"
+    "WebpackTarball"
     {
       name = "WhoReacted";
       avatarClick = false;
@@ -715,10 +772,10 @@
       name = "WhosWatching";
       showPanel = true;
     }
-    "WriteUpperCase"
     "YoutubeAdblock"
     "YoutubeDescription"
     "petpet"
+
   ];
 
   themes = [
